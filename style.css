@@ -2,85 +2,49 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  background: black;
   overflow-x: hidden;
+  background: black;
 }
 
-header {
-  text-align:center;
-  padding:20px;
-  background: linear-gradient(90deg,#4fc3ff,#ff4fc3);
-  animation: rainbow 5s linear infinite alternate;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
+  animation: moveStars 120s linear infinite;
+  z-index: -2;
 }
 
-@keyframes rainbow {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
+body::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background:
+      radial-gradient(circle at 30% 40%, rgba(0,255,255,0.2), transparent 40%),
+      radial-gradient(circle at 70% 60%, rgba(255,0,255,0.2), transparent 40%);
+  animation: glowMove 25s ease-in-out infinite alternate;
+  z-index: -1;
 }
 
-section {
-  margin:20px;
-  padding:20px;
-  background: rgba(255,255,255,0.05);
-  border-radius:15px;
-  backdrop-filter: blur(8px);
-}
+@keyframes moveStars { from { transform: translate(0,0); } to { transform: translate(-1000px,-1000px); } }
+@keyframes glowMove { from { transform: rotate(0deg) scale(1); } to { transform: rotate(360deg) scale(1.2); } }
 
-.products-container {
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-}
+header { background-color: rgba(30,144,255,0.8); padding: 20px 0; text-align: center; }
+section { padding: 20px; max-width: 900px; margin: 20px auto; background-color: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border-radius: 12px; }
+h2 { color: #4fc3ff; text-shadow: 0 0 8px #4fc3ff; }
+a { color: #4fc3ff; text-decoration: none; }
 
-.product-card {
-  flex:1 1 200px;
-  padding:15px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.1);
-  text-align:center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+.products-container { display: flex; flex-wrap: wrap; gap: 20px; }
+.product-card { background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 12px; flex: 1 1 200px; backdrop-filter: blur(6px); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.product-card:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 0 20px #4fc3ff; }
+.product-card img { max-width: 100%; border-radius: 8px; margin-bottom: 10px; }
 
-.product-card:hover {
-  transform:translateY(-10px) scale(1.05);
-  box-shadow:0 0 25px #ff4fc3;
-}
-
-.product-card img {
-  width:100%;
-  border-radius:10px;
-  margin-bottom:10px;
-}
-
-/* Alien Overlay */
-#alienOverlay {
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.95);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  opacity:1;
-  transition: opacity 1.5s ease;
-}
-
-#alienImage {
-  width:200px;
-  animation: floatAlien 3s infinite alternate;
-}
-
-@keyframes floatAlien {
-  from { transform: translateY(0); }
-  to { transform: translateY(-20px); }
-}
-
-a:hover {
-  color:#ff4fc3;
-  text-shadow:0 0 10px #ff4fc3;
-  transition:0.3s;
-}
+#alienOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 9999; opacity: 1; transition: opacity 1.5s ease; }
+#alienImage { width: 200px; animation: floatAlien 3s infinite alternate; }
+@keyframes floatAlien { from { transform: translateY(0); } to { transform: translateY(-20px); } }
