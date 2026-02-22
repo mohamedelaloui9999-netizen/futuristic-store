@@ -1,0 +1,20 @@
+[
+  { 
+    "name": "قبعة فضائية", 
+    "image": "https://i.imgur.com/alien1.png", 
+    "description": "قبعة 3D عصرية للفضائيين", 
+    "price": "$30" 
+  },
+  { 
+    "name": "ملصق مجرة", 
+    "image": "https://i.imgur.com/spaceposter.png", 
+    "description": "ملصق عالي الجودة لغرفتك", 
+    "price": "$15" 
+  },
+  { 
+    "name": "مجسم روبوت", 
+    "image": "https://i.imgur.com/robot1.png", 
+    "description": "مجسم روبوت صغير تزييني", 
+    "price": "$20" 
+  }
+]
